@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
-RUN apt update
+RUN apt update && apt install -y nginx && service nginx start
 
-CMD ["sleep", "infinity"]
+EXPOSE 80
+
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
