@@ -1,4 +1,4 @@
-# exit on erro
+# exit on error
 set -e
 
 # update and installing nginx
@@ -8,7 +8,15 @@ apt install -y nginx openssl
 # configure
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
-	-out /etc/ssl/certs/nginx-selfsigned.crt < sslinfo
+	-out /etc/ssl/certs/nginx-selfsigned.crt <<EOF
+BE
+Brussels
+Brussels
+
+
+
+
+EOF
 
 openssl dhparam -out /etc/nginx/dhparam.pem 2048
 
@@ -23,5 +31,5 @@ service nginx start
 
 nginx -t
 
-# remove cach
+# remove cache
 rm -rf /var/lib/apt/lists/*
