@@ -9,7 +9,7 @@ service mariadb start
 
 # configure
 mysql_secure_installation <<EOF
-{{ MYSQL_PASSWD }}
+$MYSQL_PASSWD
 n
 n
 Y
@@ -17,15 +17,13 @@ n
 Y
 Y
 EOF
-# {{ mysql_password }}
+# Test 
 # n # unit_socket
 # n # root passwd
 # Y # remove anonymous users
 # n # dissalow root login remote
 # Y # remove test db
 # Y # reload
-
-service mariadb start # why is it stopped?
 
 # remove cache
 rm -rf /var/lib/apt/lists/*

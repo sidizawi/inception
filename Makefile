@@ -6,15 +6,15 @@
 #    By: sidzawi <sidzawi@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 22:00:31 by sidzawi           #+#    #+#              #
-#    Updated: 2024/12/26 23:03:05 by sidzawi          ###   ########.fr        #
+#    Updated: 2024/12/28 23:40:02 by sidzawi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	docker compose up
+	docker compose --project-directory ./srcs up
 
 clean:
-	docker compose down
+	docker compose --project-directory ./srcs down
 
 re: all clean
 

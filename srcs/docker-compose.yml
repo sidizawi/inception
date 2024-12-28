@@ -1,0 +1,12 @@
+# env_file: .env
+services:
+  mariadb:
+    build: ./requirements/mariadb
+    ports:
+      - "3306:3306"
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - mariadb
