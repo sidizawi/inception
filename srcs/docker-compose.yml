@@ -1,10 +1,12 @@
 # env_file: .env
 services:
   mariadb:
+    # container_name: "mariadb"
     build: ./requirements/mariadb
     ports:
       - "3306:3306"
   nginx:
+    # container_name: "nginx"
     build: ./requirements/nginx
     ports:
       - "443:443"
