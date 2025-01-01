@@ -2,8 +2,12 @@ FROM debian:bullseye
 
 WORKDIR /app
 COPY ./conf .
-RUN chmod +x setup.sh && ./setup.sh
+
+RUN apt update \
+	&& apt install -y mariadb-server \
+	&& service mariadb start \
+	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3306
 
-ENTRYPOINT [ "mysqld" ]
+ENTRYPOINT [ "bash", "launch.sh" ]
