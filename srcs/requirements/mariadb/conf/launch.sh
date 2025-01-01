@@ -1,23 +1,45 @@
 # exit on errror
 set -e
 
-# configure
-mysql_secure_installation <<EOF
-$MYSQL_PASSWD
-n
-n
-Y
-n
-Y
-Y
-EOF
-# n # unit_socket
-# n # root passwd
-# Y # remove anonymous users
-# n # dissalow root login remote
-# Y # remove test db
-# Y # reload
+# if [ ! -d "/var/lib/mysql_backup" ]
+# then
+# 	echo "no backup"
+# 	exit 1
+# fi
 
-echo $MYSQL_PASSWD > test
+# if [ ! -d "/var/lib/mysql/mysql" ]
+# then
+# 	echo "no mysql"
+# 	cp -r /var/lib/mysql_backup /var/lib/mysql
+# 	chown -R mysql:mysql /var/lib/mysql
+# fi
+
+echo "Initializing MariaDB data directory..."
+
+mysqld_safe --skip-networking &
+
+while netstat -tulpn | grep LISTEN | grep 3306
+do
+	echo "Waiting for MariaDB to listen on port 3306..."
+	sleep 2
+done
+
+while ! mysqladmin ping --silent --user=root --password="$MYSQL_ROOT_PASSWORD"
+do
+	echo "Waiting for MariaDB to be fully ready..."
+	sleep 2
+done
+
+echo "MariaDB is up and running!"
+
+# root user
+mysql <<EOF
+GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;
+CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+GRANT ALL ON wordpress.* TO 'wordpress_user'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+FLUSH PRIVILEGES;
+EOF
+
+mysqladmin shutdown --user=root --password="$MYSQL_ROOT_PASSWORD"
 
 mysqld

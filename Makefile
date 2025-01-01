@@ -6,7 +6,7 @@
 #    By: sidzawi <sidzawi@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 22:00:31 by sidzawi           #+#    #+#              #
-#    Updated: 2024/12/28 23:53:00 by sidzawi          ###   ########.fr        #
+#    Updated: 2025/01/01 20:53:35 by sidzawi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,17 @@ all:
 clean:
 	docker compose --project-directory ./srcs down
 
+fclean:
+	docker compose --project-directory ./srcs down --volumes --rmi all
+
+# todo: add clear network, and clear volumes
+
 ps:
 	docker compose --project-directory ./srcs ps
 
 logs:
 	docker compose --project-directory ./srcs logs
 
-re: all clean
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re ps logs

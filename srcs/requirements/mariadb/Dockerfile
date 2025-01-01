@@ -4,8 +4,8 @@ WORKDIR /app
 COPY ./conf .
 
 RUN apt update \
-	&& apt install -y mariadb-server \
-	&& service mariadb start \
+	&& apt install -y mariadb-server net-tools \
+	# && cp -r /var/lib/mysql /var/lib/mysql_backup \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3306
