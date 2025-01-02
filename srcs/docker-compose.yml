@@ -1,9 +1,8 @@
-# depends_on:
-#   - mariadb
 services:
   mariadb:
-    build: ./requirements/mariadb
-    # image: "mariadb" # todo
+    build:
+      context: ./requirements/mariadb
+    image: "mariadb" # todo
     container_name: "mariadb"
     ports:
       - "3306:3306"
@@ -13,11 +12,24 @@ services:
     # volumes:
     #   - ./data/mysql:/var/lib/mysql
   nginx:
-    build: ./requirements/nginx
-    # image: "nginx" # todo
+    build:
+      context: ./requirements/nginx
+    image: "nginx" # todo
     container_name: "nginx"
     ports:
       - "443:443"
+    env_file: .env
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: "wordpress"
+    container_name: "wordpress"
+    ports:
+      - "9000:9000"
     env_file: .env
     networks:
       - inception

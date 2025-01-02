@@ -4,14 +4,13 @@ WORKDIR /app
 COPY ./conf .
 
 RUN apt update \
-	&& apt install -y php-fpm php-mysql unzip curl \
+	&& apt install -y php7.4-fpm php-mysql unzip curl gettext \
 	&& mkdir -p /var/www\
 	&& cd /var/www/ \
 	&& curl -O https://wordpress.org/latest.tar.gz \
 	&& tar xzvf latest.tar.gz \
 	&& rm latest.tar.gz \
 	&& touch wordpress/.htaccess \
-	&& cp /app/wp-config.php wordpress/wp-config.php \
 	&& mkdir wordpress/wp-content/upgrade \
 	&& chown -R www-data:www-data wordpress\
 	&& find wordpress/ -type d -exec chmod 750 {} \; \
@@ -20,8 +19,7 @@ RUN apt update \
 	
 EXPOSE 9000
 
-ENTRYPOINT ["sleep", "infinity"]
-#ENTRYPOINT ["php-fpm"]
+ENTRYPOINT [ "bash", "launch.sh" ]
 
 # todo: check: curl -s https://api.wordpress.org/secret-key/1.1/salt/
 # https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-debian-10
