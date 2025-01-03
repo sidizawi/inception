@@ -20,7 +20,11 @@ chmod 600 $SSL_KEY
 chmod 644 $SSL_CERT
 
 # cp nginx.conf /etc/nginx/nginx.conf
-envsubst < nginx.conf > /etc/nginx/nginx.conf
+envsubst < nginx.conf > nginx.conf.tmp
+
+sed -E 's/\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}/\$\1/g' "nginx.conf.tmp" > /etc/nginx/nginx.conf
+
+rm nginx.conf.tmp
 
 nginx -t
 

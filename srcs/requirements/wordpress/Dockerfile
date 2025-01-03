@@ -17,7 +17,8 @@ RUN apt update \
 	&& find wordpress/ -type f -exec chmod 640 {} \; \
 	&& rm -rf /var/lib/apt/lists/*
 	
-EXPOSE 9000
+# EXPOSE 9000
+EXPOSE 80
 
 ENTRYPOINT [ "bash", "launch.sh" ]
 
