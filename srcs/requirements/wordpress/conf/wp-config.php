@@ -104,7 +104,7 @@ define( 'DB_COLLATE', '' );
 
  */
 
-$table_prefix = 'wp_';
+{{ table_prefix }} = 'wp_';
 
 
 

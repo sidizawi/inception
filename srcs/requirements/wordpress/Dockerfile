@@ -19,8 +19,10 @@ RUN apt update \
 	&& mkdir -p /run/php \
 	&& chown www-data:www-data /run/php \
 	&& chmod 777 /run/php \
+	&& chown -R www-data:www-data /var/lib/php/sessions \
+	&& chmod 777 /var/lib/php/sessions \
 	&& rm -rf /var/lib/apt/lists/*
-	
+
 EXPOSE 9000
 
 ENTRYPOINT [ "bash", "launch.sh" ]
