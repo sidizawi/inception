@@ -29,8 +29,7 @@ services:
     image: "wordpress"
     container_name: "wordpress"
     ports:
-      - "80:80"
-      # - "9000:9000"
+      - "9000:9000"
     env_file: .env
     networks:
       - inception
