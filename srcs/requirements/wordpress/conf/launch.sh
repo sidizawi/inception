@@ -15,6 +15,5 @@ echo "error_log = /var/log/php7.4-fpm.log" >> /etc/php/7.4/fpm/php.ini
 echo "chdir = /var/www/html" >> /etc/php/7.4/fpm/pool.d/www.conf
 echo "php_admin_flag[log_errors] = on" >> /etc/php/7.4/fpm/pool.d/www.conf
 
-php-fpm7.4 -t
 
 php-fpm7.4 -F
