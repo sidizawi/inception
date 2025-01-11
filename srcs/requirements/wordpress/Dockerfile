@@ -5,22 +5,24 @@ COPY ./conf .
 
 RUN apt update \
 	&& apt install -y php7.4-fpm php-mysql unzip curl gettext \
-	&& mkdir -p /var/www \
-	&& cd /var/www/ \
-	&& curl -O https://wordpress.org/latest.tar.gz \
-	&& tar xzvf latest.tar.gz \
-	&& rm latest.tar.gz \
-	&& touch wordpress/.htaccess \
-	&& mkdir wordpress/wp-content/upgrade \
-	&& chown -R www-data:www-data wordpress \
-	&& find wordpress/ -type d -exec chmod 750 {} \; \
-	&& find wordpress/ -type f -exec chmod 640 {} \; \
-	&& mv wordpress html \
-	&& mkdir -p /run/php \
-	&& chown www-data:www-data /run/php \
-	&& chmod 777 /run/php \
-	&& chown -R www-data:www-data /var/lib/php/sessions \
-	&& chmod 777 /var/lib/php/sessions \
+	# && mkdir -p /var/www \
+	# && cd /var/www/ \
+	# && curl -O https://wordpress.org/latest.tar.gz \
+	# && tar xzvf latest.tar.gz \
+	# && rm latest.tar.gz \
+	# && touch wordpress/.htaccess \
+	# && mkdir wordpress/wp-content/upgrade \
+	# && chown -R www-data:www-data wordpress \
+	# && find wordpress/ -type d -exec chmod 750 {} \; \
+	# && find wordpress/ -type f -exec chmod 640 {} \; \
+	# && mv wordpress html \
+	\
+	\
+	# && mkdir -p /run/php \
+	# && chown www-data:www-data /run/php \
+	# && chmod 777 /run/php \
+	# && chown -R www-data:www-data /var/lib/php/sessions \
+	# && chmod 777 /var/lib/php/sessions \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9000
