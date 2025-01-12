@@ -5,17 +5,17 @@ COPY ./conf .
 
 RUN apt update \
 	&& apt install -y php7.4-fpm php-mysql unzip curl gettext \
-	# && mkdir -p /var/www \
-	# && cd /var/www/ \
-	# && curl -O https://wordpress.org/latest.tar.gz \
-	# && tar xzvf latest.tar.gz \
-	# && rm latest.tar.gz \
-	# && mv wordpress html \
-	# && touch html/.htaccess \
-	# && mkdir html/wp-content/upgrade \
-	# && chown -R www-data:www-data html \
-	# && find html/ -type d -exec chmod 750 {} \; \
-	# && find html/ -type f -exec chmod 640 {} \; \
+	&& mkdir -p /var/www \
+	&& cd /var/www/ \
+	&& curl -O https://wordpress.org/latest.tar.gz \
+	&& tar xzvf latest.tar.gz \
+	&& rm latest.tar.gz \
+	&& mv wordpress html \
+	&& touch html/.htaccess \
+	&& mkdir html/wp-content/upgrade \
+	&& chown -R www-data:www-data html \
+	&& find html/ -type d -exec chmod 750 {} \; \
+	&& find html/ -type f -exec chmod 640 {} \; \
 	&& mkdir -p /run/php \
 	&& chmod 777 /run/php \
 	&& chown www-data:www-data /run/php \
