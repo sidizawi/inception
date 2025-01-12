@@ -10,19 +10,17 @@ RUN apt update \
 	# && curl -O https://wordpress.org/latest.tar.gz \
 	# && tar xzvf latest.tar.gz \
 	# && rm latest.tar.gz \
-	# && touch wordpress/.htaccess \
-	# && mkdir wordpress/wp-content/upgrade \
-	# && chown -R www-data:www-data wordpress \
-	# && find wordpress/ -type d -exec chmod 750 {} \; \
-	# && find wordpress/ -type f -exec chmod 640 {} \; \
 	# && mv wordpress html \
-	\
-	\
-	# && mkdir -p /run/php \
-	# && chown www-data:www-data /run/php \
-	# && chmod 777 /run/php \
-	# && chown -R www-data:www-data /var/lib/php/sessions \
+	# && touch html/.htaccess \
+	# && mkdir html/wp-content/upgrade \
+	# && chown -R www-data:www-data html \
+	# && find html/ -type d -exec chmod 750 {} \; \
+	# && find html/ -type f -exec chmod 640 {} \; \
+	&& mkdir -p /run/php \
+	&& chmod 777 /run/php \
+	&& chown www-data:www-data /run/php \
 	# && chmod 777 /var/lib/php/sessions \
+	# && chown -R www-data:www-data /var/lib/php/sessions \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9000
