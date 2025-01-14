@@ -19,6 +19,7 @@ RUN apt update \
 	&& mkdir -p /run/php \
 	&& chmod 777 /run/php \
 	&& chown www-data:www-data /run/php \
+	&& mv html html_backup \
 	# && chmod 777 /var/lib/php/sessions \
 	# && chown -R www-data:www-data /var/lib/php/sessions \
 	&& rm -rf /var/lib/apt/lists/*

@@ -1,6 +1,16 @@
 # exit on errror
 set -e
 
+
+if [ ! -d "/var/www/html_backup" ]
+then
+	echo "no backup"
+	exit 1
+fi
+
+cp -r /var/www/html_backup /var/www/html
+chown -R www-data:www-data /var/www/html
+
 echo $(curl -s https://api.wordpress.org/secret-key/1.1/salt/) >> wp-config.php
 
 envsubst < wp-config.php > wp-config.php.tmp

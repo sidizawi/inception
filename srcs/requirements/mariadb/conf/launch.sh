@@ -1,18 +1,18 @@
 # exit on errror
 set -e
 
-# if [ ! -d "/var/lib/mysql_backup" ]
-# then
-# 	echo "no backup"
-# 	exit 1
-# fi
+if [ ! -d "/var/lib/mysql_backup" ]
+then
+	echo "no backup"
+	exit 1
+fi
 
-# if [ ! -d "/var/lib/mysql/mysql" ]
-# then
-# 	echo "no mysql"
-# 	cp -r /var/lib/mysql_backup /var/lib/mysql
-# 	chown -R mysql:mysql /var/lib/mysql
-# fi
+if [ ! -d "/var/lib/mysql/mysql" ]
+then
+	echo "no mysql"
+	cp -r /var/lib/mysql_backup /var/lib/mysql
+	chown -R mysql:mysql /var/lib/mysql
+fi
 
 echo "Initializing MariaDB data directory..."
 

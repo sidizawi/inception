@@ -9,18 +9,20 @@ services:
     env_file: .env
     networks:
       - inception
-    # volumes:
-    #   - ./data/mysql:/var/lib/mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
   nginx:
     build:
       context: ./requirements/nginx
-    image: "nginx" # todo
+    image: "nginx"
     container_name: "nginx"
     ports:
       - "443:443"
     env_file: .env
     networks:
       - inception
+    volumes:
+      - ./data/wordpress:/var/www/html
     depends_on:
       - wordpress
   wordpress:
@@ -33,6 +35,8 @@ services:
     env_file: .env
     networks:
       - inception
+    volumes:
+      - ./data/wordpress:/var/www/html
     depends_on:
       - mariadb
 networks:
