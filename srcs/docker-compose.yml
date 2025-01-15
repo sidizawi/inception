@@ -10,7 +10,7 @@ services:
     networks:
       - inception
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./data/mariadb:/var/lib/mysql
   nginx:
     build:
       context: ./requirements/nginx
