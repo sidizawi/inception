@@ -2,7 +2,7 @@ services:
   mariadb:
     build:
       context: ./requirements/mariadb
-    image: "mariadb" # todo
+    image: "mariadb"
     container_name: "mariadb"
     ports:
       - "3306:3306"
