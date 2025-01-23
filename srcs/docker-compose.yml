@@ -21,8 +21,8 @@ services:
     env_file: .env
     networks:
       - inception
-    volumes:
-      - ./data/wordpress:/var/www/html
+    # volumes:
+    #   - ./data/wordpress:/var/www/html
     depends_on:
       - wordpress
   wordpress:
@@ -35,8 +35,6 @@ services:
     env_file: .env
     networks:
       - inception
-    volumes:
-      - ./data/wordpress:/var/www/html
     depends_on:
       - mariadb
 networks:

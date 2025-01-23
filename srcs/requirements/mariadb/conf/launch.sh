@@ -33,6 +33,7 @@ done
 echo "MariaDB is up and running!"
 
 # root user
+# todo: add if not exist for create database
 mysql <<EOF
 GRANT ALL ON *.* TO '$MYSQL_ROOT'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;
 CREATE DATABASE $WORDPRESS_DB;

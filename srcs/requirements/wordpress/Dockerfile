@@ -13,15 +13,15 @@ RUN apt update \
 	&& mv wordpress html \
 	&& touch html/.htaccess \
 	&& mkdir html/wp-content/upgrade \
-	&& chown -R www-data:www-data html \
+	&& chown -R root:root html \
 	&& find html/ -type d -exec chmod 750 {} \; \
 	&& find html/ -type f -exec chmod 640 {} \; \
 	&& mkdir -p /run/php \
 	&& chmod 777 /run/php \
-	&& chown www-data:www-data /run/php \
-	&& mv html html_backup \
+	&& chown root:root /run/php \
+	# && mv html html_backup \
 	# && chmod 777 /var/lib/php/sessions \
-	# && chown -R www-data:www-data /var/lib/php/sessions \
+	# && chown -R root:root /var/lib/php/sessions \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9000

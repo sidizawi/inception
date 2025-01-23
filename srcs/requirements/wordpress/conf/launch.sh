@@ -1,15 +1,14 @@
 # exit on errror
 set -e
 
+# if [ ! -d "/var/www/html_backup" ]
+# then
+# 	echo "no backup"
+# 	exit 1
+# fi
 
-if [ ! -d "/var/www/html_backup" ]
-then
-	echo "no backup"
-	exit 1
-fi
-
-cp -r /var/www/html_backup /var/www/html
-chown -R www-data:www-data /var/www/html
+# cp -r /var/www/html_backup /var/www/html
+# chown -R www-data:www-data /var/www/html
 
 echo $(curl -s https://api.wordpress.org/secret-key/1.1/salt/) >> wp-config.php
 
@@ -17,7 +16,7 @@ envsubst < wp-config.php > wp-config.php.tmp
 sed -E 's/\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}/\$\1/g' "wp-config.php.tmp" > /var/www/html/wp-config.php
 
 chmod 777 /var/www/html/wp-config.php
-chown www-data:www-data /var/www/html/wp-config.php
+# chown www-data:www-data /var/www/html/wp-config.php
 
 rm wp-config.php.tmp
 

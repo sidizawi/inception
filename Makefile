@@ -6,7 +6,7 @@
 #    By: sidzawi <sidzawi@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 22:00:31 by sidzawi           #+#    #+#              #
-#    Updated: 2025/01/02 22:50:10 by sidzawi          ###   ########.fr        #
+#    Updated: 2025/01/23 17:01:29 by sidzawi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ fclean:
 
 ps:
 	docker compose --project-directory ./srcs ps
+
+prune:
+	docker system prune -a
 
 logs:
 	docker compose --project-directory ./srcs logs
