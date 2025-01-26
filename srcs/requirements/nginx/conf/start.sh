@@ -17,7 +17,6 @@ EOF
 
 openssl dhparam -out /etc/nginx/dhparam.pem 2048
 
-
 nginx -t
 
 nginx -g "daemon off;"

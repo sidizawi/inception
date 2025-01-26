@@ -8,6 +8,6 @@ RUN apt update \
 	&& cp default /etc/nginx/sites-available/default \
 	&& rm -rf /var/lib/apt/lists/*
 
-EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT [ "bash", "start.sh" ]
