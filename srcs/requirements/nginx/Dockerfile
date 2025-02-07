@@ -11,4 +11,6 @@ RUN apt update \
 
 COPY ./conf/nginx.conf /etc/nginx
 
+EXPOSE 443
+
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
