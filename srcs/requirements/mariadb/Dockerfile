@@ -1,12 +1,13 @@
 FROM debian:bullseye
 
+VOLUME /var/lib/mysql
+
 WORKDIR /app
 COPY ./conf/ .
 
-VOLUME /var/lib/mysql
-
 RUN apt update \
 	&& apt install -y mariadb-server \
+	&& mv ./my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3306

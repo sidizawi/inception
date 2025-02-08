@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
+VOLUME /var/www/html/wordpress
+
 RUN apt update \
 	&& apt install -y nginx openssl \
 	&& openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
