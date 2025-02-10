@@ -2,8 +2,8 @@
 
 set -e
 
-echo "ftpuser:$FTP_PASSWD"
-echo "ftpuser:password" | chpasswd
+FTP_PASSWD=$(echo "$FTP_PASSWD" | sed 's/"//g')
 
-# exec vsftpd
-sleep infinity
+echo "ftpuser:$FTP_PASSWD" | chpasswd
+
+exec vsftpd /etc/vsftpd.conf

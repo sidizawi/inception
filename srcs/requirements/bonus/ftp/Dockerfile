@@ -10,11 +10,17 @@ RUN apt update \
 	&& mkdir -p /var/www /var/run/vsftpd/empty \
 	&& chown -R ftpuser:ftpuser /var/www /var/run/vsftpd/empty \
 	&& chmod 755 /var/www \
-	&& echo "pasv_enable=NO" >> /etc/vsftpd.conf \
+	&& echo "pasv_enable=YES" >> /etc/vsftpd.conf \
+	&& echo "pasv_min_port=21000" >> /etc/vsftpd.conf \
+	&& echo "pasv_max_port=21010" >> /etc/vsftpd.conf \
+	&& echo "pasv_address=127.0.0.1" >> /etc/vsftpd.conf \
 	&& echo "local_root=/var/www" >> /etc/vsftpd.conf \
-	# && echo "anonymous_enable=YES" >> /etc/vsftpd.conf \
+	&& echo "write_enable=YES" >> /etc/vsftpd.conf \
 	&& rm -rf /var/lib/apt/lists/*
 
-EXPOSE 20 21
+EXPOSE 20 21000-21010
 
 ENTRYPOINT [ "bash", "start.sh" ]
+
+# Commands: ls, get, put, mkdir
+# ftp -p localhost

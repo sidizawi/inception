@@ -35,6 +35,20 @@ services:
       - inception
     ports:
       - 443:443
+  ftp:
+    build: ./requirements/bonus/ftp
+    image: ftp
+    container_name: ftp
+    env_file: ".env"
+    volumes:
+      - wordpress_data:/var/www
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    ports:
+      - 21:21
+      - 21000-21010:21000-21010
 networks:
   inception:
 volumes:

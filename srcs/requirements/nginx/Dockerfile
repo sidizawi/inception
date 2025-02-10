@@ -4,7 +4,7 @@ VOLUME /var/www/html/wordpress
 
 RUN apt update \
 	&& apt install -y nginx openssl \
-	&& openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+	&& openssl req -x509 -nodes -days 365 -newkey rsa:1024 \
 		-keyout /etc/ssl/private/nginx-selfsigned.key \
 		-out /etc/ssl/certs/nginx-selfsigned.crt \
 		-subj "/C=BE/ST=Brussels/L=Brussels/O=Organization/OU=Unit/CN=commonname" \
