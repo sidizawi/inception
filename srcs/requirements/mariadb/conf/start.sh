@@ -5,13 +5,15 @@ set -e
 service mariadb start
 
 if ! mysql -u root -e "SELECT 1;" >/dev/null 2>&1; then
+    echo "adding a password to root"
     mysql -u root <<-EOSQL
-        SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MARIADB_ROOT_PASSWORD}');
+        SET PASSWORD FOR 'root'@'localhost' = PASSWORD("${MARIADB_ROOT_PASSWORD}");
         FLUSH PRIVILEGES;
 EOSQL
 fi
 
 # Create database and user
+echo "create database and user"
 mysql -u root -p"${MARIADB_ROOT_PASSWORD}" <<-EOSQL
     CREATE DATABASE IF NOT EXISTS ${DB_NAME};
     CREATE USER IF NOT EXISTS '${DB_ADMIN}'@'%' IDENTIFIED BY '${DB_ADMIN_PASSWD}';
