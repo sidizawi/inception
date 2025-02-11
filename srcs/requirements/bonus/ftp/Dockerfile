@@ -18,7 +18,7 @@ RUN apt update \
 	&& echo "write_enable=YES" >> /etc/vsftpd.conf \
 	&& rm -rf /var/lib/apt/lists/*
 
-EXPOSE 20 21000-21010
+EXPOSE 21 21000-21010
 
 ENTRYPOINT [ "bash", "start.sh" ]
 

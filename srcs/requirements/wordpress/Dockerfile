@@ -17,9 +17,10 @@ RUN apt update \
 		php-xml \
 		php-zip \
 		curl \
-		unzip \
+		# unzip \
 		less \
 		mariadb-client \
+		redis-tools \
 	&& usermod -s /bin/bash www-data \
 	&& curl -O https://wordpress.org/latest.tar.gz \
 	&& tar xzvf latest.tar.gz \
