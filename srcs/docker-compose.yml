@@ -62,6 +62,14 @@ services:
       - inception
     ports:
       - 8080:8080
+  resume:
+    build: ./requirements/bonus/resume
+    image: resume
+    container_name: resume
+    networks:
+      - inception
+    ports:
+      - 8000:8000
 networks:
   inception:
 volumes:
