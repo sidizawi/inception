@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
+# todo: remove my.cnf
+
 VOLUME /var/lib/mysql
 
 WORKDIR /app
