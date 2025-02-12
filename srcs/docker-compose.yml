@@ -100,7 +100,7 @@ services:
     image: typeform-front
     container_name: typeform-front
     volumes:
-      - ./requirements/bonus/typeform-front/typeform:/app
+      - ./requirements/bonus/typeform-front:/app
     networks:
       - inception
     ports:

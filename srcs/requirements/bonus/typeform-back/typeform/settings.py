@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # extern
+    'rest_framework',
+
+    # local
     'api.apps.ApiConfig',
     'models.apps.ModelsConfig',
-    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [

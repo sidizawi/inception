@@ -3,8 +3,8 @@ FROM debian:bullseye
 VOLUME /app
 
 WORKDIR /app
-COPY ./typeform/package*.json .
-COPY ./typeform .
+COPY ./package*.json .
+COPY . .
 
 RUN apt update \
 	&& apt install -y curl \
