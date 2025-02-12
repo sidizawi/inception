@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,23 +82,23 @@ WSGI_APPLICATION = 'typeform.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'your_database_name',
-#         'USER': 'your_username',
-#         'PASSWORD': 'your_password',
-#         'HOST': 'localhost',
-#         'PORT': '3306', # default MariaDB port
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('TYPEFORM_DB_NAME'),
+        'USER': os.getenv('TYPEFORM_DB_USER'),
+        'PASSWORD': os.getenv('TYPEFORM_DB_PASSWORD'),
+        'HOST': 'mariadb',
+        'PORT': '3306', # default MariaDB port
+    }
+}
 
 
 # Password validation

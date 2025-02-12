@@ -2,7 +2,7 @@
 
 set -e
 
-while ! mysql -h mariadb ${DB_NAME} -u "${DB_ADMIN}" -p"${DB_ADMIN_PASSWD}" -e "SELECT 1;" >/dev/null 2>&1; do
+while ! mysql -h mariadb ${WP_DB_NAME} -u "${WP_DB_ADMIN}" -p"${WP_DB_ADMIN_PASSWD}" -e "SELECT 1;" >/dev/null 2>&1; do
     echo "Waiting for MariaDB..."
     sleep 2
 done

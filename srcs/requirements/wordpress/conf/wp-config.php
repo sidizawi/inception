@@ -1,7 +1,7 @@
 <?php
-define('DB_NAME', getenv("DB_NAME"));
-define('DB_USER', getenv("DB_ADMIN"));
-define('DB_PASSWORD', getenv("DB_ADMIN_PASSWD"));
+define('DB_NAME', getenv("WP_DB_NAME"));
+define('DB_USER', getenv("WP_DB_ADMIN"));
+define('DB_PASSWORD', getenv("WP_DB_ADMIN_PASSWD"));
 define('DB_HOST', 'mariadb');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
