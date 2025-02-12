@@ -15,6 +15,12 @@ define('SECURE_AUTH_SALT', '_=Y|6sLmIF m&>d,20)q;uqJ77+,[]@YU8$|CFJD eg&3IbyG&rk
 define('LOGGED_IN_SALT',   ',=H&yPr]j7pcgw[S_6X-/g~k+~wa}A]2]Q+w-f]N$mv{)aF]7}BqU c6Fexb=ro*');
 define('NONCE_SALT',       'nDelV&E4|bQcxEl|}@i{=zPI?7MS!TCh,<b8;-~iD{3UOJz.)RJ+FRh%5xI^[pt;');
 
+// redis
+define('WP_CACHE', true);
+define('WP_REDIS_HOST', 'redis');
+define('WP_REDIS_SCHEME', 'tcp');
+define('WP_CACHE_KEY_SALT', 'sidzawi.42.fr');
+
 $table_prefix = 'wp_';
 
 define('WP_DEBUG', false);
@@ -23,5 +29,8 @@ if (!defined('ABSPATH')) {
     define('ABSPATH', __DIR__ . '/');
 }
 
-require_once ABSPATH . 'wp-settings.php';
+if (!isset($_SERVER['HTTP_HOST'])) {
+    $_SERVER['HTTP_HOST'] = 'sidzawi.42.fr';
+}
 
+require_once ABSPATH . 'wp-settings.php';

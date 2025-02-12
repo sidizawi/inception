@@ -18,9 +18,10 @@ services:
     container_name: wordpress
     env_file: ".env"
     volumes:
-      - wordpress_data:/var/www/html/wordpress
+      - wordpress_data:/var/www/html
     depends_on:
       - mariadb
+      - redis
     networks:
       - inception
     ports:
@@ -31,7 +32,7 @@ services:
     image: nginx
     container_name: nginx
     volumes:
-      - wordpress_data:/var/www/html/wordpress
+      - wordpress_data:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -74,16 +75,23 @@ services:
     ports:
       - 8000:8000
     restart: on-failure
-  redis: # todo
+  redis:
     build: ./requirements/bonus/redis
     image: redis
     container_name: redis
-    depends_on:
-      - wordpress
     networks:
       - inception
     ports:
       - 6379:6379
+    restart: on-failure
+  typeform:
+    build: ./requirements/bonus/typeform
+    image: typeform
+    container_name: typeform
+    networks:
+      - inception
+    ports:
+      - 8081:8081
     restart: on-failure
 networks:
   inception:
