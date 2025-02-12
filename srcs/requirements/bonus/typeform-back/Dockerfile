@@ -1,5 +1,6 @@
 FROM debian:bullseye
 
+VOLUME /app
 WORKDIR /app
 COPY requirements.txt .
 COPY . .
