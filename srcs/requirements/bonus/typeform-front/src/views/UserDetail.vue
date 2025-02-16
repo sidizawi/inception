@@ -23,12 +23,12 @@ const submit = async () => {
 		error.value = 'You must provide your actual password';
 		return;
 	}
-	const res = await updateUser({
-		firstName: firstName.value,
-		lastName: lastName.value,
-		password: password.value.length > 0 ? password.value : null,
-		actualPassword: actualPassword.value.length > 0 ? actualPassword.value : null,
-	});
+	const res = await updateUser(
+		firstName.value,
+		lastName.value,
+		password.value.length > 0 ? password.value : null,
+		actualPassword.value.length > 0 ? actualPassword.value : null,
+	);
 
 	if (res.error) {
 		error.value = res.error;

@@ -58,7 +58,6 @@ export const updateUser = async (firstName, lastName, password, actualPassword) 
 		if (!token) {
 			return { error: 'No token' };
 		}
-		console.log('updateUser', firstName, lastName, password, actualPassword);
 		const response = await axios.put(path, {
 			first_name: firstName,
 			last_name: lastName,

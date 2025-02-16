@@ -48,6 +48,7 @@ class UserAPI(APIView):
 		user = request.user
 		if request.data.get('email') and request.data.get('email') != user.email:
 			return Response({'message': 'email cannot be changed'}, status=status.HTTP_400_BAD_REQUEST)
+		print('request data', request.data)
 		user.first_name = request.data.get('first_name', user.first_name)
 		user.last_name = request.data.get('last_name', user.last_name)
 		password = request.data.get('password')
@@ -64,3 +65,4 @@ class UserAPI(APIView):
 			user.set_password(password)
 		user.save()
 		return Response({'user': user.serialized}, status=status.HTTP_200_OK)
+

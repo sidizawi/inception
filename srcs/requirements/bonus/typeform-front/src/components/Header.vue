@@ -1,14 +1,17 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+import { useTokenStore } from '@/stores/token'
+
 import Logo from '@/components/Logo.vue'
 import ButtonLink from '@/components/ButtonLink.vue'
 
-const props = defineProps({
-	loggedIn: {
-		type: Boolean,
-		default: false
-	}
-})
+const router = useRouter();
+const loggedIn = ref(false);
+
+onMounted(() => {
+	loggedIn.value = !useTokenStore().isExpired;
+});
 
 </script>
 
@@ -18,7 +21,7 @@ const props = defineProps({
 			<Logo />
 		</RouterLink>
 		<div v-if="loggedIn">
-			<div id="profile" @click="() => console.log('profile clicked')" type="button">
+			<div id="profile" @click="() => router.push('/dashboard')" type="button">
 				<i class="pi pi-user"></i>
 			</div>
 			<ButtonLink link="/logout" name="Log out" primary />
@@ -63,5 +66,4 @@ nav div {
 	border-radius: 50%;
 	border: 2px solid black;
 }
-
 </style>
