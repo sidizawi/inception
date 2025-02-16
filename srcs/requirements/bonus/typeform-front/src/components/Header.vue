@@ -2,6 +2,14 @@
 import { RouterLink } from 'vue-router'
 import Logo from '@/components/Logo.vue'
 import ButtonLink from '@/components/ButtonLink.vue'
+
+const props = defineProps({
+	loggedIn: {
+		type: Boolean,
+		default: false
+	}
+})
+
 </script>
 
 <template>
@@ -9,8 +17,13 @@ import ButtonLink from '@/components/ButtonLink.vue'
 		<RouterLink to="/">
 			<Logo />
 		</RouterLink>
-		<div>
-			<!-- <RouterLink to="/login">Login</RouterLink> -->
+		<div v-if="loggedIn">
+			<div id="profile" @click="() => console.log('profile clicked')" type="button">
+				<i class="pi pi-user"></i>
+			</div>
+			<ButtonLink link="/logout" name="Log out" primary />
+		</div>
+		<div v-else>
 			<ButtonLink link="/login" name="Log in" />
 			<ButtonLink link="/register" name="Sign up" primary />
 		</div>
@@ -36,6 +49,19 @@ nav div {
 	display: flex;
 	display: space-evenly;
 	margin-right: 30px;
+}
+
+#profile {
+	margin: 8px;
+	font-size: 1.3em;
+	/* margin-right: 10px; */
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: 2px solid black;
 }
 
 </style>

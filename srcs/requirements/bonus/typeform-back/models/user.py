@@ -9,12 +9,13 @@ class User(AbstractUser):
 
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = []
+
 	objects = UserManager()
 
 	@property
 	def serialized(self):
 		return {
 			'email': self.email,
-			'first_name': self.first_name,
-			'last_name': self.last_name,
+			'firstName': self.first_name,
+			'lastName': self.last_name,
 		}

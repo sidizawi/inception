@@ -13,7 +13,6 @@ EOSQL
 fi
 
 # Create database and user
-echo "create database and user"
 mysql -u root -p"${MARIADB_ROOT_PASSWORD}" <<-EOSQL
     CREATE DATABASE IF NOT EXISTS ${WP_DB_NAME};
     CREATE USER IF NOT EXISTS '${WP_DB_ADMIN}'@'%' IDENTIFIED BY '${WP_DB_ADMIN_PASSWD}';

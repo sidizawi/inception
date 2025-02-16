@@ -31,7 +31,6 @@ def verify_token(func):
 			return Response({'message': 'Token expired'}, status=status.HTTP_401_UNAUTHORIZED)
 		except jwt.InvalidTokenError:
 			return Response({'message': 'Invalid token'}, status=status.HTTP_401_UNAUTHORIZED)
-		print("decoded", decoded)
 		request.user = User.objects.get(id=decoded['user_id'], email__iexact=decoded['email'])
 		return func(self, request)
 	return wrapper

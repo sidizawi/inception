@@ -7,6 +7,7 @@ RUN apt update \
 	&& sed -i '/^bind/c\bind 0.0.0.0' /etc/redis/redis.conf \
 	&& sed -i '/^protected-mode/c\protected-mode no' /etc/redis/redis.conf \
 	&& sed -i '/^# syslog-enabled/c\syslog-enabled yes' /etc/redis/redis.conf \
+	&& echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 6379

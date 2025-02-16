@@ -1,6 +1,7 @@
 FROM debian:bullseye
 
 VOLUME /app
+
 WORKDIR /app
 COPY requirements.txt .
 COPY . .
@@ -12,6 +13,7 @@ RUN apt update \
 	python3-dev \
 	default-libmysqlclient-dev \
 	build-essential \
+	mariadb-client \
 	&& pip install -r requirements.txt \
 	&& rm -rf /var/lib/apt/lists/*
 

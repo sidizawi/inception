@@ -3,8 +3,8 @@ from . import user, token
 
 urlpatterns = [
 	# users
-	path('user/', user.User.as_view()),
+	path('user/', user.UserAPI.as_view()),
 
 	# login
-	path('token/', token.Token.as_view()),
+	path('login/', token.Token.as_view()),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # extern
     'rest_framework',
+    'corsheaders',
 
     # local
     'api.apps.ApiConfig',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 AUTH_USER_MODEL = 'models.User'
@@ -99,6 +101,14 @@ DATABASES = {
         'PORT': '3306', # default MariaDB port
     }
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8082",
+]
+
+CORS_ALLOWED_METHODS = [
+    "*",
+]
 
 
 # Password validation
