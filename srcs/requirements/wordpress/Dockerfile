@@ -17,8 +17,8 @@ RUN apt update \
 	&& curl -O https://wordpress.org/latest.tar.gz \
 	&& tar xzvf latest.tar.gz \
 	&& rm latest.tar.gz \
-	&& curl -O https://assets.digitalocean.com/articles/wordpress_redis/object-cache.php \
-	&& mv object-cache.php wordpress/wp-content \
+	&& mkdir -p /var/www/.wp-cli/cache \
+	&& chown -R www-data:www-data /var/www/.wp-cli \	
 	&& cp wp-config.php wordpress \
 	&& chown -R www-data:www-data wordpress \
 	&& chmod -R 777 wordpress \

@@ -33,4 +33,9 @@ if ! su -p www-data -c "wp user list --field=user_login --path=/var/www/html | g
 		--user_pass="${WP_REGULAR_PASS}""
 fi
 
+if ! su -p www-data -c "wp plugin list --path=/var/www/html" | grep -q "redis-cache"; then
+    su -p www-data -c "wp plugin install redis-cache --activate --path=/var/www/html"
+    su -p www-data -c "wp redis enable --path=/var/www/html"
+fi
+
 exec php-fpm7.4 -F

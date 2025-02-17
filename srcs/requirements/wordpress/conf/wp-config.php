@@ -20,6 +20,9 @@ define('WP_CACHE', true);
 define('WP_REDIS_HOST', 'redis');
 define('WP_REDIS_SCHEME', 'tcp');
 define('WP_CACHE_KEY_SALT', 'sidzawi.42.fr');
+define('WP_REDIS_TIMEOUT', 1);
+define('WP_REDIS_DATABASE', 0);
+define('WP_REDIS_DEBUG', true);
 
 $table_prefix = 'wp_';
 

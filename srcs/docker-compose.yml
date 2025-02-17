@@ -6,7 +6,7 @@ services:
     container_name: mariadb
     env_file: ".env"
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - ~/data/mariadb:/var/lib/mysql
     networks:
       - inception
     ports:
@@ -113,4 +113,4 @@ networks:
   inception:
 volumes:
   wordpress_data:
-  mariadb_data:
+  # mariadb_data:

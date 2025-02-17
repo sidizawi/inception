@@ -6,11 +6,14 @@
 #    By: sidzawi <sidzawi@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 22:00:31 by sidzawi           #+#    #+#              #
-#    Updated: 2025/02/10 20:39:20 by sidzawi          ###   ########.fr        #
+#    Updated: 2025/02/17 01:34:41 by sidzawi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
+	mkdir -p ~/data/wordpress
+	mkdir -p ~/data/mariadb
+	chmod -R 777 ~/data
 	docker compose --project-directory ./srcs up --build
 
 clean:
