@@ -14,4 +14,3 @@ EXPOSE 6379
 ENTRYPOINT [ "redis-server", "--protected-mode", "no" ]
 
 # redis-cli info stats | grep -E '(keyspace_hits|keyspace_misses)'
-# todo: finish it

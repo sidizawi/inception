@@ -7,6 +7,7 @@ services:
     env_file: ".env"
     volumes:
       - ~/data/mariadb:/var/lib/mysql
+      # - mariadb_data:/var/lib/mysql
     networks:
       - inception
     ports:
@@ -91,6 +92,8 @@ services:
     image: typeform-back
     container_name: typeform-back
     env_file: ".env"
+    depends_on:
+      - mariadb
     volumes:
       - ./requirements/bonus/typeform-back:/app
     networks:
@@ -102,6 +105,8 @@ services:
     build: ./requirements/bonus/typeform-front
     image: typeform-front
     container_name: typeform-front
+    depends_on:
+      - typeform-back
     volumes:
       - ./requirements/bonus/typeform-front:/app
     networks:
