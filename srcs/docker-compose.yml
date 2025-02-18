@@ -6,8 +6,8 @@ services:
     container_name: mariadb
     env_file: ".env"
     volumes:
-      # - ~/data/mariadb:/var/lib/mysql:Z
-      - mariadb_data:/var/lib/mysql
+      - ~/data/mariadb:/var/lib/mysql
+      # - mariadb_data:/var/lib/mysql
     networks:
       - inception
     ports:
@@ -107,8 +107,6 @@ services:
     container_name: typeform-front
     depends_on:
       - typeform-back
-    volumes:
-      - ./requirements/bonus/typeform-front:/app
     networks:
       - inception
     ports:
@@ -118,4 +116,4 @@ networks:
   inception:
 volumes:
   wordpress_data:
-  mariadb_data:
+    #mariadb_data:

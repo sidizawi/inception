@@ -11,6 +11,8 @@
 # **************************************************************************** #
 
 all:
+	mkdir -p /home/sidzawi/data
+	chmod -R 777 /home/sidzawi/data
 	docker compose --project-directory ./srcs up --build
 
 clean:

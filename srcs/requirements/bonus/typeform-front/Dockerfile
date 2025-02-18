@@ -11,6 +11,7 @@ RUN apt update \
 	&& curl -fsSL https://deb.nodesource.com/setup_20.x | bash -  \
 	&& apt install -y nodejs \
 	&& npm install \
+	&& npm install vite \
 	&& rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8082
