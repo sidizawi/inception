@@ -6,7 +6,7 @@ services:
     container_name: mariadb
     env_file: ".env"
     volumes:
-      # - ~/data/mariadb:/var/lib/mysql
+      # - ~/data/mariadb:/var/lib/mysql:Z
       - mariadb_data:/var/lib/mysql
     networks:
       - inception
