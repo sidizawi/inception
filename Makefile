@@ -6,13 +6,11 @@
 #    By: sidzawi <sidzawi@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 22:00:31 by sidzawi           #+#    #+#              #
-#    Updated: 2025/02/17 21:27:08 by sidzawi          ###   ########.fr        #
+#    Updated: 2025/02/20 21:28:01 by sidzawi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	mkdir -p /home/sidzawi/data
-	chmod -R 777 /home/sidzawi/data
 	docker compose --project-directory ./srcs up --build
 
 clean:
