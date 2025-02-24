@@ -92,8 +92,6 @@ services:
     env_file: ".env"
     depends_on:
       - mariadb
-    volumes:
-      - ./requirements/bonus/typeform-back:/app
     networks:
       - inception
     ports:
