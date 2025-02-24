@@ -11,15 +11,14 @@
 # **************************************************************************** #
 
 all:
-	mkdir -p ~/data/wordpress ~/data/mariadb
-	chmod -R 777 ~/data
+	mkdir -p /home/sidzawi/data/wordpress /home/sidzawi/data/mariadb
+	chmod -R 777 /home/sidzawi/data
 	docker compose --project-directory ./srcs up --build
 
 clean:
 	docker compose --project-directory ./srcs down
 
 fclean:
-	rm -rf ~/data
 	docker compose --project-directory ./srcs down --volumes --rmi all
 
 ps:
